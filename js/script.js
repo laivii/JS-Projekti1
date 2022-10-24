@@ -26,8 +26,9 @@ function listItem(x){
 
     let checkbox = document.createElement("input");
         checkbox.type = "checkbox";
+        checkbox.id = "checkbox";
         checkbox.className = "notdone";
-        checkbox.addEventListener("click", markDone);
+        checkbox.addEventListener("click", mark);
     newtask.appendChild(checkbox);
 
     let textNode = document.createTextNode(x);
@@ -43,51 +44,39 @@ function listItem(x){
 }
 
 function checkContent(x){
+    let box = document.getElementById("task");
+
     if(x == ''){
-        alert("Your input was too short");
+        box.style.border = "2px dotted red";
+
+        alert("Your input cannot be blank!");
         return false;
-    } 
+    }
+
+    if(x.length <= 3){
+        box.style.border = "2px dotted red";
+
+        alert("Your input was too short!");
+        return false;
+    }
+
+    box.style.border = "1px solid grey";
+    box.style.borderRadius = "2px"
     return true;
 }
 
-function markDone(){
+function mark(){
+    let state = this.checked;
     let task = this.parentElement;
-        task.style.color = "lightgrey";
-        task.style.textDecoration = "line-through";
 
-    let x = document.getElementsByClassName("notdone")[0];
-    x.setAttribute("class", "done");
-
-    tasksDone();
-    tasksNotDone();
-}
-
-function tasksDone(){
-    let place = document.getElementById("done");
-    let amount = document.getElementsByClassName("done").length;
-
-    place.innerHTML = amount + " done";
-}
-
-function tasksNotDone() {
-    let place = document.getElementById("notdone");
-    let amount = document.getElementsByClassName("notdone").length;
-
-    place.innerHTML = amount + " not done";
-}
-
-function AmountOfTasks(){
-    let place = document.getElementById("amount");
-    let notdone = document.getElementById("notdone");
-    let amount = document.getElementsByClassName("tehtävä").length;
-
-    if(amount == 1){
-        place.innerHTML = amount + " task";
-    } else {
-        place.innerHTML = amount + " tasks";
+    if( state == false){
+            task.style.color = "black";
+            task.style.textDecoration = "none";
+        return;
     }
 
-    notdone.innerHTML = amount + " not done";
+    task.style.color = "lightgrey";
+    task.style.textDecoration = "line-through";
 }
 
 function removeTask(){
