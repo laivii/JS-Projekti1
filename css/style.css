@@ -1,7 +1,55 @@
+body {
+    text-align: center;
+    margin: auto;
+    width: 40%;
+    font-size: 2vw;
+}
+
 ul {
     list-style-type: none;
+    text-align: left;
+    margin-top: 2%;
+}
+
+li {
+    margin: 2%;
+}
+
+input[type=checkbox] {
+    visibility: hidden;
+}
+
+.checkbox {
+    margin-right: 5%;
+}
+
+.checkbox:checked {
+    background-color: pink;
+}
+
+button {
+    border: 1px solid lightgrey;
+    border-radius: 2px;
+    background-color: rgb(255, 218, 223);
+}
+
+.remove {
+    float: right;
+}
+
+#amount {
+    float: left;
+}
+
+#clearAll {
+    float: right;
 }
 
 textarea {
     resize: none;
+}
+
+#submit {
+    vertical-align: top;
+    margin: auto;
 }
