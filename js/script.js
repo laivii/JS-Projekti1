@@ -19,6 +19,14 @@ function submitTask(){
     var textarea = document.getElementById("taskvalue");
     textarea.value = "";
 
+    //Pushing new tasks to local Storage
+    let list = JSON.parse(localStorage.getItem("tasks"));
+    if (list == null) {
+        list = []
+    }
+    list.push(value);
+    localStorage.setItem("tasks", JSON.stringify(list));
+
     amountOfTasks();
 }
 
@@ -35,7 +43,6 @@ function listItem(x){
         checkbox.type = "checkbox";
         checkbox.id = "checkbox"; 
         checkbox.className = "checkbox";
-        checkbox.className = "custom"; //trying to make a custom checkbox
         checkbox.addEventListener("click", markTasks); //Adding a listener for functionality
     newtask.appendChild(checkbox); //Appending to the "li" element
 
@@ -114,6 +121,8 @@ function clearAll(){
         let removed = document.getElementById("task");
         removed.remove();
     }
+
+    localStorage.removeItem("tasks"); //removes all the tasks from local storage
 
     amountOfTasks();
 }
