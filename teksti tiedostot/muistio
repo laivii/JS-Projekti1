@@ -1,54 +1,9 @@
-function mark(){
-    let state = this.checked;
-    let task = this.parentElement;
+/*let lista = JSON.parse(localStorage.getItem("tasks")); //lista saa arvokseen local storagen sisällön
 
-    if( state == false){
-            task.style.color = "black";
-            task.style.textDecoration = "none";
+let määrä = lista.length; //antaa local storagen sisällön pituuden
 
-        /*let x = document.getElementsByClassName("done")[this];
-            x.setAttribute("class", "notdone");
-
-        tasksDone();
-        tasksNotDone();*/
-
-        return;
-    }
-
-    task.style.color = "lightgrey";
-    task.style.textDecoration = "line-through";
-
-    /*let x = document.getElementsByClassName("notdone")[this];
-        x.setAttribute("class", "done");
-        
-    tasksDone();
-    tasksNotDone();*/
+for(let i =  0; i < määrä; i++){
+    console.log(lista[i]);
 }
 
-/*function tasksDone(){
-    let place = document.getElementById("done");
-    let amount = document.getElementsByClassName("done").length;
-
-    place.innerHTML = amount + " done";
-}
-
-function tasksNotDone() {
-    let place = document.getElementById("notdone");
-    let amount = document.getElementsByClassName("notdone").length;
-
-    place.innerHTML = amount + " not done";
-}
-
-function AmountOfTasks(){
-    let place = document.getElementById("amount");
-    let notdone = document.getElementById("notdone");
-    let amount = document.getElementsByClassName("tehtävä").length;
-
-    if(amount == 1){
-        place.innerHTML = amount + " task";
-    } else {
-        place.innerHTML = amount + " tasks";
-    }
-
-    notdone.innerHTML = amount + " not done";
-}*/
+localStorage.removeItem("tasks"); //poistaa kaikki talennetut tehtävät*/

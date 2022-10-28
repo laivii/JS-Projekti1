@@ -1,23 +1,26 @@
 document.getElementById("submit").addEventListener("click", submitTask);
 document.getElementById("clearAll").addEventListener("click", clearAll);
 
+printFromStorage();
+
+function printFromStorage(){
+    let list = JSON.parse(localStorage.getItem("tasks")); //list = the list of task put to the storage or 'null' if there is none
+    
+    if(list != null){
+        let määrä = list.length; //Gives the length/amount of the tasks stored in local storage
+
+        //Prints the tasks from local storage
+        for(let i =  0; i < määrä; i++){
+            listItem(list[i]);
+        }
+    }
+}
+
 function submitTask(){
     var value = document.getElementById("taskvalue").value;
 
-    //Checking that the input is correct (not too short and not empty)
-    if(checkContent(value) != true){
-        return;
-    }
-
-    let tasks = document.getElementById("tasklist");
-
     //Creating a new listing (a new "li" element for a task)
-    let newtask = listItem(value);
-    tasks.appendChild(newtask); //Appending to the excisting "ul" element
-
-    //Emptying the textarea for the next task
-    var textarea = document.getElementById("taskvalue");
-    textarea.value = "";
+    listItem(value);
 
     //Pushing new tasks to local Storage
     let list = JSON.parse(localStorage.getItem("tasks"));
@@ -27,11 +30,18 @@ function submitTask(){
     list.push(value);
     localStorage.setItem("tasks", JSON.stringify(list));
 
-    amountOfTasks();
+    //Emptying the textarea for the next task
+    var textarea = document.getElementById("taskvalue");
+    textarea.value = "";
 }
 
-function listItem(x){
-    //let määrä = document.getElementsByTagName("li").length;
+function listItem(value){
+    //Checking that the input is correct (not too short and not empty)
+    if(checkContent(value) != true){
+        return;
+    }
+
+    let tasks = document.getElementById("tasklist");
 
     //Creating the "li" element
     let newtask = document.createElement("li");
@@ -47,7 +57,7 @@ function listItem(x){
     newtask.appendChild(checkbox); //Appending to the "li" element
 
     //Creating a text node (this wont allow using html tags)
-    let textNode = document.createTextNode(x);
+    let textNode = document.createTextNode(value);
     newtask.appendChild(textNode); //Appending to "li" element
 
     //Creating a button, defining class and innerHTML (text shown to the user in browser)
@@ -57,7 +67,10 @@ function listItem(x){
         remove.addEventListener("click", removeTask); //Adding a listener for functionality
     newtask.appendChild(remove); //Appending to the "li" element
 
-    return newtask; //Returning the finished "li" element
+    //Appending to the excisting "ul" element
+    tasks.appendChild(newtask);
+
+    amountOfTasks();
 }
 
 function checkContent(x){
