@@ -17,6 +17,8 @@ function printFromStorage(){
     for(let i =  0; i < määrä; i++){
         listItem(list[i].task, list[i].state);
     }
+
+    itemsLeft();
 }
 
 function submitTask(){
