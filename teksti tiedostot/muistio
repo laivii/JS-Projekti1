@@ -1,9 +1,0 @@
-/*let lista = JSON.parse(localStorage.getItem("tasks")); //lista saa arvokseen local storagen sisällön
-
-let määrä = lista.length; //antaa local storagen sisällön pituuden
-
-for(let i =  0; i < määrä; i++){
-    console.log(lista[i]);
-}
-
-localStorage.removeItem("tasks"); //poistaa kaikki talennetut tehtävät*/

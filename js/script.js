@@ -1,41 +1,56 @@
 document.getElementById("submit").addEventListener("click", submitTask);
 document.getElementById("clearAll").addEventListener("click", clearAll);
 
-printFromStorage();
+printFromStorage(); //Printing is here so when we have stored data we can continue rigth were we left
 
 function printFromStorage(){
     let list = JSON.parse(localStorage.getItem("tasks")); //list = the list of task put to the storage or 'null' if there is none
     
-    if(list != null){
-        let määrä = list.length; //Gives the length/amount of the tasks stored in local storage
+    //Checking this so we don't get unnecessary errors
+    if(list == null){
+     return;
+    }
 
-        //Prints the tasks from local storage
-        for(let i =  0; i < määrä; i++){
-            listItem(list[i]);
-        }
+    let määrä = list.length; //Gives the length/amount of the tasks stored in local storage
+
+    //Prints the tasks from local storage and set's their state
+    for(let i =  0; i < määrä; i++){
+        listItem(list[i].task, list[i].state);
     }
 }
 
 function submitTask(){
     var value = document.getElementById("taskvalue").value;
+    var state = false;
 
     //Creating a new listing (a new "li" element for a task)
-    listItem(value);
-
-    //Pushing new tasks to local Storage
-    let list = JSON.parse(localStorage.getItem("tasks"));
-    if (list == null) {
-        list = []
-    }
-    list.push(value);
-    localStorage.setItem("tasks", JSON.stringify(list));
+    listItem(value,state);
 
     //Emptying the textarea for the next task
     var textarea = document.getElementById("taskvalue");
     textarea.value = "";
+
+    savingToStorage(value);
 }
 
-function listItem(value){
+function savingToStorage(value){
+    //Pushing new tasks to local Storage
+    let list = JSON.parse(localStorage.getItem("tasks"));
+    if (list == null) {
+        list = [];
+    }
+
+    taskObj = {
+        "task": value,
+        "state": false /*We need to format this here so we can change it later in "markDone" function. 
+                        However every new task state is anyway false.*/
+    }
+
+    list.push(taskObj); //Pushing this to the list and seting it to local storage.
+    localStorage.setItem("tasks", JSON.stringify(list));
+}
+
+function listItem(value, state){
     //Checking that the input is correct (not too short and not empty)
     if(checkContent(value) != true){
         return;
@@ -44,26 +59,38 @@ function listItem(value){
     let tasks = document.getElementById("tasklist");
 
     //Creating the "li" element
+    var which = document.getElementsByClassName("task").length;
     let newtask = document.createElement("li");
     newtask.className = "task";
-    newtask.id = "task";
+    newtask.id = `${which}`;
 
     //Creating "input" element, defining type, id and class
     let checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         checkbox.id = "checkbox"; 
         checkbox.className = "checkbox";
+        checkbox.checked = state;
         checkbox.addEventListener("click", markTasks); //Adding a listener for functionality
     newtask.appendChild(checkbox); //Appending to the "li" element
+
+    //This one is for that the style is correct while printing from local storage
+    if(state == true){
+        newtask.style.color = "lightgrey";
+        newtask.style.textDecoration = "line-through";
+    }
 
     //Creating a text node (this wont allow using html tags)
     let textNode = document.createTextNode(value);
     newtask.appendChild(textNode); //Appending to "li" element
 
-    //Creating a button, defining class and innerHTML (text shown to the user in browser)
-    let remove = document.createElement("button");
+
+    //Creating a button, defining class
+    let remove = document.createElement("input");
+        remove.type = "image";
         remove.className = "remove";
-        remove.innerHTML = "remove";
+        remove.src = "images/remove-icon.png";
+        remove.style.height = "10%";
+        remove.style.width = "10%";
         remove.addEventListener("click", removeTask); //Adding a listener for functionality
     newtask.appendChild(remove); //Appending to the "li" element
 
@@ -103,18 +130,33 @@ function markTasks(){
     let state = this.checked; //This one checks the state of the task (done=true or undone=false)
     let task = this.parentElement;
 
+    var storage = JSON.parse(localStorage.getItem("tasks"));
+
+    //Chencking that storage is not null so we don't get errors
+    if(storage == null){
+        return;
+    }
+
     itemsLeft();
 
     //If task is being marked undone, this makes the listing take its original form.
-    if( state == false){
+    if(state == false){
             task.style.color = "black";
             task.style.textDecoration = "none";
+
+            //Saving the state to local storage
+            storage[task.id].state = false;
+            localStorage.setItem("tasks", JSON.stringify(storage));
         return;
     }
 
     //These apply when the task is being marked as done
     task.style.color = "lightgrey";
     task.style.textDecoration = "line-through";
+
+    //Saving the state to local storage
+    storage[task.id].state = true;
+    localStorage.setItem("tasks", JSON.stringify(storage));
 }
 
 function removeTask(){
@@ -127,14 +169,14 @@ function removeTask(){
 
 function clearAll(){
     //The amount of "li" elements
-    let amount = document.getElementsByClassName("task").length;
+    var list = document.getElementById("tasklist");
+    list.remove();
 
-    //This one goes through every "li" element and removes them
-    for(var i = 0; i < amount; i++){
-        let removed = document.getElementById("task");
-        removed.remove();
-    }
-
+    var place = document.getElementById("taskhome");
+    let newUl = document.createElement("ul");
+        newUl.id = "tasklist";
+    place.appendChild(newUl);
+    
     localStorage.removeItem("tasks"); //removes all the tasks from local storage
 
     amountOfTasks();

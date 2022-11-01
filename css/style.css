@@ -1,15 +1,5 @@
 *{box-sizing: border-box;}
 
-@media only screen and (max-width: 600px) {
-    /*[class*="col-"] {
-      width: 100%;
-    }*/
-
-    body {
-        width: 100%;
-    }
-}
-
 body {
     text-align: center;
     font-size: 2vw;
@@ -20,8 +10,18 @@ body {
     border-bottom: 1px solid lightgray;
 }
 
+h1 {
+    margin-bottom: 2%;
+}
+
+img {
+    height: 5%;
+    width: 5%;
+}
+
 #useless {
     border-bottom: 1px solid lightgray;
+    margin-top: 1%;
 }
 
 ul {
@@ -49,6 +49,8 @@ button {
 
 .remove {
     float: right;
+    padding-left: 2%;
+    padding-right: 2%;
 }
 
 #amount {
@@ -67,5 +69,24 @@ textarea {
 
 #submit {
     vertical-align: top;
-    margin: auto;
+}
+
+@media screen and (max-width: 600px) {
+    [class*="col-"] {
+      width: 100%;
+    }
+
+    body {
+        width: 90%;
+        font-size: 3vw;
+    }
+
+    #submit {
+        margin: auto;
+        float: none;
+    }
+
+    textarea {
+        float: none;
+    }
 }
