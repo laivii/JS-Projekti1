@@ -25,14 +25,17 @@ function submitTask(){
     var value = document.getElementById("taskvalue").value;
     var state = false;
 
-    //Creating a new listing (a new "li" element for a task)
-    listItem(value,state);
+    if(checkContent(value) == true){
+        //Creating a new listing (a new "li" element for a task)
+        listItem(value,state);
+
+        //Saving to to local storage
+        savingToStorage(value);
+    }
 
     //Emptying the textarea for the next task
     var textarea = document.getElementById("taskvalue");
     textarea.value = "";
-
-    savingToStorage(value);
 }
 
 function savingToStorage(value){
@@ -54,9 +57,9 @@ function savingToStorage(value){
 
 function listItem(value, state){
     //Checking that the input is correct (not too short and not empty)
-    if(checkContent(value) != true){
+    /*if(checkContent(value) != true){
         return;
-    }
+    }*/
 
     let tasks = document.getElementById("tasklist");
 
@@ -102,11 +105,11 @@ function listItem(value, state){
     amountOfTasks();
 }
 
-function checkContent(x){
+function checkContent(value){
     let box = document.getElementById("taskvalue");
 
     //Chenking that input is not blank
-    if(x == ''){
+    if(value == ''){
         box.style.border = "2px dotted red"; //Textareas border change if error occurs
 
         alert("Your input cannot be blank!");
@@ -114,7 +117,7 @@ function checkContent(x){
     }
 
     //Checking that input is not too short
-    if(x.length <= 3){
+    if(value.length <= 3){
         box.style.border = "2px dotted red";
 
         alert("Your input was too short!");
