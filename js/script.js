@@ -7,9 +7,11 @@ document.getElementById("taskvalue").addEventListener("keypress", submitWithEnte
 //Listener for Clear all -button
 document.getElementById("clearAll").addEventListener("click", clearAll);
 
-document.getElementById("hideDone").addEventListener("click", hideDoneTasks);
+//Listener for Hide all -button
+document.getElementById("hideDone").addEventListener("click", function(){hideAndShow("none")});
 
-document.getElementById("showAll").addEventListener("click", showAll);
+//Listener to Show all -button
+document.getElementById("showAll").addEventListener("click", function(){hideAndShow("block")});
 
 printFromStorage(); //Printing is here so when we have stored data we can continue rigth were we left
 
@@ -181,7 +183,7 @@ function markTasks(){
     localStorage.setItem("tasks", JSON.stringify(storage));
 }
 
-function hideDoneTasks(){
+function hideAndShow(arvo){
     var tasks = document.getElementsByClassName("checkbox").length;
 
     //Checking the array of "li" elements for their state (done/notdone).
@@ -190,30 +192,13 @@ function hideDoneTasks(){
         var state = tehtävä.checked;
         var äippä = tehtävä.parentElement;
 
-        //Increasing the "done" value with one every time a task is marked done
-        if(state != true){
+        //If state is not done, do not continue
+        if(state == false){
             return;
         }
 
-        äippä.style.display = "none";
-    }
-}
-
-function showAll(){
-    var tasks = document.getElementsByClassName("checkbox").length;
-
-    //Checking the array of "li" elements for their state (done/notdone).
-    for(let i = 0; i < tasks; i++){
-        var tehtävä = document.getElementsByClassName("checkbox")[i];
-        var state = tehtävä.checked;
-        var äippä = tehtävä.parentElement;
-
-        //Increasing the "done" value with one every time a task is marked done
-        if(state != true){
-            return;
-        }
-
-        äippä.style.display = "block";
+        //Show block
+        äippä.style.display = arvo;
     }
 }
 
