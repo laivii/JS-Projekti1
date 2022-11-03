@@ -1,10 +1,12 @@
 # Web-Applications with Javascript Project 1: DOM-scripting
 
-### Todo-list
+## Todo-list
 
-Contributors: 
+### Contributors: 
 * Viivi Laitinen (@laivii)
 * Eliisa Kupiainen (@elkkuli)
+
+### Why and how it should work?
 
 This a project for our Javascript course. 
 
@@ -16,6 +18,6 @@ The assigment was to make a Todo-app kind of thingy. It should be able to do the
 * When marking tasks the visual appereance should change (different for done and not done tasks)
 * Tasks and their state (done/not done) should be saved to local storage for later use (you can close the window and next time continue from where you left).
 
-View with;
+### View with;
 * Netlify: https://js-projekti1-todo-vl-ek.netlify.app/
 * Or you can open file in browser: "~../index.html"
