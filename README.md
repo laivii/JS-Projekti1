@@ -6,6 +6,9 @@ Contributors:
 * Viivi Laitinen (@laivii)
 * Eliisa Kupiainen (@elkkuli)
 
+
+
+
 This a project for our Javascript course. 
 
 The assigment was to make a Todo-app kind of thingy. It should be able to do the following:
