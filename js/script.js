@@ -120,7 +120,7 @@ function checkContent(value){
 
     //Chenking that input is not blank
     if(value == ''){
-        box.style.border = "2px dotted red"; //Textareas border change if error occurs
+        box.style.border = "2px solid #FF7D78"; //Textareas border change if error occurs
 
         alert("Your input cannot be blank!");
         return false;
@@ -128,7 +128,7 @@ function checkContent(value){
 
     //Checking that input is not too short
     if(value.length <= 3){
-        box.style.border = "2px dotted red";
+        box.style.border = "2px solid #FF7D78";
 
         alert("Your input was too short!");
         return false;
