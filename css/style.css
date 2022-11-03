@@ -102,7 +102,6 @@ button {
 }
 
 #clearAll {
-    margin-right: 2%;
     float: right;
 }
 
@@ -120,21 +119,32 @@ textarea {
 }
 
 @media screen and (max-width: 1100px) {
-    [class*="col-"] {
-      width: 100%;
-    }
-
     body {
         width: 90%;
         font-size: 3vw;
     }
 
-    #submit {
-        margin: auto;
+    textarea, #submit, #clearAll, #amount {
         float: none;
     }
 
     textarea {
         float: none;
+    }
+
+}
+
+@media screen and (max-width: 500px){
+    [class*="col-"] {
+        width: 100%;
+    }
+  
+    body {
+        width: 90%;
+        font-size: 1.3rem;
+    }
+
+    #second {
+        margin-top: 2%;
     }
 }
