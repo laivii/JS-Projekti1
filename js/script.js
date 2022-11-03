@@ -1,4 +1,5 @@
 document.getElementById("submit").addEventListener("click", submitTask);
+document.getElementById("taskvalue").addEventListener("keypress", submitWithEnter);
 document.getElementById("clearAll").addEventListener("click", clearAll);
 
 printFromStorage(); //Printing is here so when we have stored data we can continue rigth were we left
@@ -19,6 +20,15 @@ function printFromStorage(){
     }
 
     itemsLeft();
+}
+
+function submitWithEnter(enter){
+    if(enter.key != "Enter"){
+        return;
+    }
+
+    enter.preventDefault();
+    document.getElementById("submit").click();
 }
 
 function submitTask(){
@@ -126,8 +136,8 @@ function checkContent(value){
 
     //This one return the border to it's original form after error when valid input is submitted
     //Operates every round when input is valid, but is form the reason stated over this.
-    box.style.border = "1px solid grey";
-    box.style.borderRadius = "2px"
+    box.style.border = "none";
+    box.style.borderRadius = "1rem";
     return true;
 }
 
