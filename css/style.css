@@ -45,7 +45,19 @@ li {
 }
 
 .checkbox {
+    background-color: #F2F2F2;
+    border-radius: 2px;
+    appearance: none;
+    width: 17px;
+    height: 17px;
+    cursor: pointer;
+    vertical-align: middle;
     margin-right: 5%;
+    box-shadow: 1px 1px 1px 1px #616161;
+}
+
+.checkbox:checked{
+    background: #A8CCE8 url("data:image/gif;base64,R0lGODlhCwAKAIABAP////3cnSH5BAEKAAEALAAAAAALAAoAAAIUjH+AC73WHIsw0UCjglraO20PNhYAOw==") 3px 3px no-repeat;
 }
 
 button {
