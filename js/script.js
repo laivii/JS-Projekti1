@@ -113,8 +113,8 @@ function createlistItem(value, state){
         remove.type = "image";
         remove.className = "remove";
         remove.src = "images/remove.png";
-        remove.style.height = "10%";
-        remove.style.width = "10%";
+        remove.style.height = "6%";
+        remove.style.width = "6%";
         remove.addEventListener("click", removeTask); //Adding a listener for functionality
     newtask.appendChild(remove); //Appending to the "li" element
 
