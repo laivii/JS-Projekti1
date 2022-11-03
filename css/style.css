@@ -69,6 +69,16 @@ button {
     background-color: #F2F2F2;
 }
 
+#submit:hover {
+    background-color: #9DDB93;
+    color: white;
+}
+
+#clearAll:hover {
+    background-color: #FF7D78;
+    color: white;
+}
+
 .remove {
     float: right;
     padding-left: 2%;
