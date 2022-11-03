@@ -1,9 +1,9 @@
-#Web-Applications with Javascript Project 1: DOM-scripting
+# Web-Applications with Javascript Project 1: DOM-scripting
 
-###Todo-list
+Todo-list
 
-<p>Contributors: 
-    Viivi Laitinen (@laivii) 
-    Eliisa Kupiainen (@elkkuli)</p>
+Contributors: 
+* Viivi Laitinen (@laivii)
+* Eliisa Kupiainen (@elkkuli)
 
-<p>This a project for our Javascript course.</p>
+This a project for our Javascript course.
