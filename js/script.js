@@ -93,7 +93,7 @@ function createlistItem(value, state){
     let remove = document.createElement("input");
         remove.type = "image";
         remove.className = "remove";
-        remove.src = "images/remove-icon.png";
+        remove.src = "images/remove.png";
         remove.style.height = "10%";
         remove.style.width = "10%";
         remove.addEventListener("click", removeTask); //Adding a listener for functionality
