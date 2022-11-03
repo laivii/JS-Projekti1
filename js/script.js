@@ -7,6 +7,10 @@ document.getElementById("taskvalue").addEventListener("keypress", submitWithEnte
 //Listener for Clear all -button
 document.getElementById("clearAll").addEventListener("click", clearAll);
 
+document.getElementById("hideDone").addEventListener("click", hideDoneTasks);
+
+document.getElementById("showAll").addEventListener("click", showAll);
+
 printFromStorage(); //Printing is here so when we have stored data we can continue rigth were we left
 
 function printFromStorage(){
@@ -175,6 +179,42 @@ function markTasks(){
     //Saving the state to local storage
     storage[task.id].state = true;
     localStorage.setItem("tasks", JSON.stringify(storage));
+}
+
+function hideDoneTasks(){
+    var tasks = document.getElementsByClassName("checkbox").length;
+
+    //Checking the array of "li" elements for their state (done/notdone).
+    for(let i = 0; i < tasks; i++){
+        var tehtävä = document.getElementsByClassName("checkbox")[i];
+        var state = tehtävä.checked;
+        var äippä = tehtävä.parentElement;
+
+        //Increasing the "done" value with one every time a task is marked done
+        if(state != true){
+            return;
+        }
+
+        äippä.style.display = "none";
+    }
+}
+
+function showAll(){
+    var tasks = document.getElementsByClassName("checkbox").length;
+
+    //Checking the array of "li" elements for their state (done/notdone).
+    for(let i = 0; i < tasks; i++){
+        var tehtävä = document.getElementsByClassName("checkbox")[i];
+        var state = tehtävä.checked;
+        var äippä = tehtävä.parentElement;
+
+        //Increasing the "done" value with one every time a task is marked done
+        if(state != true){
+            return;
+        }
+
+        äippä.style.display = "block";
+    }
 }
 
 function removeTask(){

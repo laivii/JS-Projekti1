@@ -79,6 +79,16 @@ button {
     color: white;
 }
 
+#hideDone:hover {
+    background-color: #9c9a9a;
+    color: white;
+}
+
+#showAll:hover {
+    background-color: #9c9a9a;
+    color: white;
+}
+
 .remove {
     float: right;
     padding-left: 2%;
@@ -108,7 +118,7 @@ textarea {
     vertical-align: top;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1100px) {
     [class*="col-"] {
       width: 100%;
     }
