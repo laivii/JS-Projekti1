@@ -1,17 +1,24 @@
-*{box-sizing: border-box;}
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Raleway:wght@300&display=swap');
+
+*{
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif; 
+
+}
 
 body {
     text-align: center;
-    font-size: 2vw;
+    font-size: 1.5rem;
     margin: auto;
     width: 40%;
-    border-left: 1px solid lightgray;
-    border-right: 1px solid lightgray;
-    border-bottom: 1px solid lightgray;
+    border: none;
 }
 
 h1 {
-    margin-bottom: 2%;
+    color: #616161;
+    margin: 5% 0 2% 0;
+    font-weight: 300;
+    font-size: 2.5rem;
 }
 
 img {
@@ -20,7 +27,7 @@ img {
 }
 
 #useless {
-    border-bottom: 1px solid lightgray;
+    border: none;
     margin-top: 1%;
 }
 
@@ -42,9 +49,12 @@ li {
 }
 
 button {
-    border: 1px solid lightgrey;
-    border-radius: 2px;
-    background-color: rgb(255, 218, 223);
+    padding: 0.5rem;
+    font-size: 1.25rem;
+    color: #616161;
+    border: none;
+    border-radius: 1rem;
+    background-color: #F2F2F2;
 }
 
 .remove {
@@ -64,7 +74,12 @@ button {
 }
 
 textarea {
+    padding: 0.5rem;
+    font-size: 1.25rem;
     resize: none;
+    border-radius: 1rem;
+    border-style: none;
+    background-color: #F2F2F2;
 }
 
 #submit {
