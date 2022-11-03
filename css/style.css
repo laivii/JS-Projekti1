@@ -96,7 +96,8 @@ button {
 }
 
 #amount {
-    margin-left: 2%;
+    font-size: 1.25rem;
+    padding: 0.5rem;
     float: left;
 }
 
