@@ -6,7 +6,8 @@
 * Viivi Laitinen (@laivii)
 * Eliisa Kupiainen (@elkkuli)
 
-### Why and how it should work?
+
+
 
 This a project for our Javascript course. 
 
