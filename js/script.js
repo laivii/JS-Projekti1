@@ -1,5 +1,10 @@
+//Eventlistener for Submit button
 document.getElementById("submit").addEventListener("click", submitTask);
+
+//Listener for Enter-keypress --> submitting by pressing enter
 document.getElementById("taskvalue").addEventListener("keypress", submitWithEnter);
+
+//Listener for Clear all -button
 document.getElementById("clearAll").addEventListener("click", clearAll);
 
 printFromStorage(); //Printing is here so when we have stored data we can continue rigth were we left
@@ -19,20 +24,21 @@ function printFromStorage(){
         createlistItem(list[i].task, list[i].state);
     }
 
-    itemsLeft();
+    itemsLeft(); //Updating Items Left calculator
 }
 
 function submitWithEnter(enter){
+    //If the key is not "Enter" then the code will not process
     if(enter.key != "Enter"){
         return;
     }
 
     enter.preventDefault();
-    document.getElementById("submit").click();
+    document.getElementById("submit").click(); //Simulates a mouse click on "Submit"-button
 }
 
 function submitTask(){
-    var value = document.getElementById("taskvalue").value;
+    var value = document.getElementById("taskvalue").value; //Get's textare value
     var state = false;
 
     if(checkContent(value) == true){
@@ -51,6 +57,8 @@ function submitTask(){
 function savingToStorage(value){
     //Pushing new tasks to local Storage
     let list = JSON.parse(localStorage.getItem("tasks"));
+
+    //Checks that list is not null and if it is sets value to an empty list
     if (list == null) {
         list = [];
     }
@@ -66,11 +74,6 @@ function savingToStorage(value){
 }
 
 function createlistItem(value, state){
-    //Checking that the input is correct (not too short and not empty)
-    /*if(checkContent(value) != true){
-        return;
-    }*/
-
     let tasks = document.getElementById("tasklist");
 
     //Creating the "li" element

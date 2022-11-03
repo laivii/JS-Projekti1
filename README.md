@@ -8,7 +8,7 @@
 
 ### Why and how the thing works?
 
-This a project for our Javascript course. 
+This is a project for our Javascript course. 
 
 The assigment was to make a Todo-app kind of thingy. It should be able to do the following:
 * Add tasks
