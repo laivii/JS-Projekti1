@@ -15,7 +15,7 @@ function printFromStorage(){
 
     //Prints the tasks from local storage and set's their state
     for(let i =  0; i < määrä; i++){
-        listItem(list[i].task, list[i].state);
+        createlistItem(list[i].task, list[i].state);
     }
 
     itemsLeft();
@@ -27,7 +27,7 @@ function submitTask(){
 
     if(checkContent(value) == true){
         //Creating a new listing (a new "li" element for a task)
-        listItem(value,state);
+        createlistItem(value,state);
 
         //Saving to to local storage
         savingToStorage(value);
@@ -55,7 +55,7 @@ function savingToStorage(value){
     localStorage.setItem("tasks", JSON.stringify(list));
 }
 
-function listItem(value, state){
+function createlistItem(value, state){
     //Checking that the input is correct (not too short and not empty)
     /*if(checkContent(value) != true){
         return;
@@ -173,18 +173,19 @@ function removeTask(){
 }
 
 function clearAll(){
-    //The amount of "li" elements
+    //Setting "list" value as the "ul" element we gather our tasks to
     var list = document.getElementById("tasklist");
-    list.remove();
+    list.remove(); //Deleting the whole "ul" element
 
+    //Creating a new "ul" element to the same "div" element as the last one
     var place = document.getElementById("taskhome");
     let newUl = document.createElement("ul");
         newUl.id = "tasklist";
-    place.appendChild(newUl);
+    place.appendChild(newUl); //Appending it to the "div"
     
     localStorage.removeItem("tasks"); //removes all the tasks from local storage
 
-    amountOfTasks();
+    amountOfTasks(); //Updating the task calculator
 }
 
 function amountOfTasks(){
