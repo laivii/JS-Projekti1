@@ -207,6 +207,19 @@ function removeTask(){
     let removed = this.parentElement;
     removed.remove();
 
+    //Removing the task from local storage
+    let list = JSON.parse(localStorage.getItem("tasks"));
+
+    const index = removed.id; //The id of the "li" element of which task we want to remove
+
+    //Checking that the id is valid
+    if (index > -1) {
+        list.splice(index, 1); //Modifying the list of task telling the index of where to start and then how many objects to splice(remove)
+    }
+
+    //Storing the new modified list
+    localStorage.setItem("tasks", JSON.stringify(list));
+
     amountOfTasks();
 }
 
@@ -221,7 +234,7 @@ function clearAll(){
         newUl.id = "tasklist";
     place.appendChild(newUl); //Appending it to the "div"
     
-    localStorage.removeItem("tasks"); //removes all the tasks from local storage
+    localStorage.clear(); //removes all the tasks from local storage
 
     amountOfTasks(); //Updating the task calculator
 }
